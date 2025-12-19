@@ -10,8 +10,17 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "pid"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "pid"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "forkedPid"
+                  }
+                ]
               },
               {
                 "type": "BLANK"
@@ -28,6 +37,10 @@
               {
                 "type": "SYMBOL",
                 "name": "signal"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "attach"
               },
               {
                 "type": "SYMBOL",
@@ -172,9 +185,43 @@
         }
       ]
     },
+    "attach": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "strace: Process "
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pid"
+        },
+        {
+          "type": "STRING",
+          "value": " attached"
+        }
+      ]
+    },
     "pid": {
       "type": "SYMBOL",
       "name": "integer"
+    },
+    "forkedPid": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\[pid\\s*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pid"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
     },
     "syscall": {
       "type": "PATTERN",

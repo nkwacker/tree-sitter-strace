@@ -859,3 +859,52 @@ parameter inside comment
             (value
               (integer)))
           (comment))))))
+
+================================================================================
+follow forks pid prefix
+================================================================================
+
+[pid    18] ioctl(3, SIOCGIFNAME, {ifr_ifindex=4860}) = -1 ENODEV (No such device)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (forkedPid
+    (pid
+      (integer)))
+  (line
+    (syscall)
+    (parameters
+      (parameter
+        (values
+          (value
+            (integer))))
+      (parameter
+        (values
+          (value)))
+      (parameter
+        (dict
+          (dictElem
+            (dictKey)
+            (parameter
+              (values
+                (value
+                  (integer))))))))
+    (returnValue
+      (integer)
+      (errorName)
+      (errorDescription
+        (errorContent)))))
+
+================================================================================
+process attach
+================================================================================
+
+strace: Process 143405 attached
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (attach
+    (pid
+      (integer))))
